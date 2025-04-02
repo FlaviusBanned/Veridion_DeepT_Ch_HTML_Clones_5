@@ -2,111 +2,25 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/jake_icon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Clones</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: radial-gradient(circle, #333333, #121212);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            flex-direction: column;
-        }
-
-        .popUp {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 15px;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 600px;
-            gap: 10px; 
-        }
-
-        input[type="file"] {
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            background: rgba(255, 255, 255, 0.2);
-            font-size: 16px;
-            color: white;
-            transition: background 0.1s ease, border 0.1s ease;
-            width: 80%; 
-        }
-
-        input[type="file"]:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(0, 10, 151, 0.6);
-        }
-
-        button {
-            padding: 10px;
-            border-radius: 8px;
-            border: none;
-            font-size: 16px;
-            background: rgba(29, 26, 26, 0.822);
-            color: white;
-            cursor: pointer;
-            transition: background 0.1s ease, border 0.1s ease;
-            width: 30%;
-        }
-
-
-        button:hover {
-            background: rgba(0, 10, 151, 0.6);
-            border: 2px solid white;
-        }
-
-        @media (max-width: 600px) {
-            .popUp {
-                flex-direction: column; 
-                width: 80%; 
-            }
-            input[type="file"], button {
-                width: 60%;
-                margin-bottom: 10px; 
-            }
-        }
-        p {
-            position: absolute; 
-            bottom: 30px;
-            width: 100%;
-            text-align: center;
-            margin: 0;
-            font-size: 16px;
-            color: #ccc;
-        }
-    </style>
+    <link rel="stylesheet" href="/sh_style.css">
 </head>
 <body>
-    <h2>Let s check for HTML 'clones' shall we ? </h2>
+    <h2>Let’s check for HTML 'clones' shall we?</h2>
     <div class="popUp">
         <input type="file" id="fileInput" multiple>
-        <button onclick="uploadDoc()">Upload</button>
+        <button id="button_upload" onclick="uploadDoc()">Upload</button>
     </div>
-<p>All Rights Reserved | Pirjoleanu Mihai Flavius</p>
-    <script>
-        function uploadDoc() {
-            let files = document.getElementById('fileInput').files;
-            let formData = new FormData();
-            for (let i = 0; i < files.length; i++) {
-                formData.append('files', files[i]);
-            }
+    <h3>Uploaded Files:</h3>
+    <div id="uploadedFiles"> </div>
+    <button id="button_clear" onclick="clearFiles()">Clear</button>
+    <button id="button_python_script" onclick="seeOutput()"> See Output </button>
+    <p>All Rights Reserved | Pirjoleanu Mihai Flavius</p>
 
-            fetch('/upload', { method: 'POST', body: formData })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Upload success:', data);
-                })
-                .catch(error => console.error('Error:', error));
-        }
+    <script src="/script_sorting.js">
+        // fac o lista de files 
     </script>
 </body>
 </html>
